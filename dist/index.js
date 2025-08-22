@@ -70,7 +70,7 @@ fs.writeFileSync(join(projectDir, 'tsconfig.json'), Buffer.from(JSON.stringify(d
 const filename = fileURLToPath(import.meta.url);
 const dir = dirname(filename);
 // Create mise.toml
-const miseConfigPath = join(dir, 'default-mise.toml');
+const miseConfigPath = join(dir, 'mise.toml');
 const defaultMiseConfig = fs.readFileSync(miseConfigPath);
 fs.writeFileSync(join(projectDir, 'mise.toml'), Buffer.from(defaultMiseConfig));
 // trust
@@ -79,6 +79,10 @@ cp.execSync('mise trust .');
 const eslintConfigPath = join(dir, 'eslint.config.js');
 const defaultESLintConfig = fs.readFileSync(eslintConfigPath);
 fs.writeFileSync(join(projectDir, 'eslint.config.js'), Buffer.from(defaultESLintConfig));
+// Create prettier.config.js
+const prettierConfigPath = join(dir, 'prettier.config.js');
+const defaultPrettierConfig = fs.readFileSync(prettierConfigPath);
+fs.writeFileSync(join(projectDir, 'prettier.config.js'), Buffer.from(defaultPrettierConfig));
 // Create cspell.config.js
 const cspellConfigPath = join(dir, 'cspell.config.js');
 const defaultCSpellConfig = fs.readFileSync(cspellConfigPath);
