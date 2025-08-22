@@ -9,7 +9,7 @@ import path, { dirname, join } from 'path';
 import cp from 'child_process';
 import { exit } from 'process';
 
-const defPkgJson = fs.readFileSync('./default-package.json')
+const defPkgJson = fs.readFileSync(join(process.cwd(), 'default-package.json'))
 // import defaultPkgJson from "./default-package.json" with { type: "json"};
 
 const cleanup = () => {
