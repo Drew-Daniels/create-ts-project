@@ -13,7 +13,7 @@
     "create-ts-project": "dist/index.js"
   },
   "files": [
-    "dist/index.js"
+    "dist"
   ],
   "dependencies": {},
   "devDependencies": {
