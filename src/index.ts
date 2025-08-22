@@ -9,9 +9,11 @@ import { dirname, join } from 'path';
 import cp from 'child_process';
 import { exit } from 'process';
 import lodash from "lodash";
+import ora from 'ora';
 
 // Where the user called the script
 const CWD = process.env.INIT_CWD as string;
+const spinner = ora();
 
 // Paths to files created
 const MISE_CONF_PATH = join(CWD, 'mise.toml');
@@ -88,7 +90,9 @@ cp.execSync("mise use node@22.17.1")
 fs.writeFileSync(join(projectDir, 'package.json'), Buffer.from(JSON.stringify(pkgJson)))
 
 // Install dependencies
+spinner.start('Installing dependencies')
 cp.execSync("npm i")
+spinner.stop()
 
 // Create tsconfig.json
 fs.writeFileSync(join(projectDir, 'tsconfig.json'), Buffer.from(JSON.stringify(defaultTSConfig)))
