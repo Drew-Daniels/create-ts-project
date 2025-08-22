@@ -1,9 +1,9 @@
 {
-  "name": "foo-project",
-  "description": "<DESCRIPTION>",
+  "name": "ts-project",
+  "description": "Utility to easily scaffold a new TS project",
   "version": "0.1.0",
   "author": "Drew Daniels",
-  "bugs": "https://github.com/Drew-Daniels/foo-project/issues",
+  "bugs": "https://github.com/Drew-Daniels/ts-project/issues",
   "main": "install.js",
   "bin": {
     "install": "install.js"
@@ -21,13 +21,10 @@
     "typescript": "^5",
     "typescript-eslint": "^8.39.1"
   },
-  "homepage": "https://github.com/Drew-Daniels/foo-project",
-  "keywords": [
-    "oclif"
-  ],
+  "homepage": "https://github.com/Drew-Daniels/ts-project",
   "license": "MIT",
   "type": "module",
-  "repository": "Drew-Daniels/foo-project",
+  "repository": "Drew-Daniels/ts-project",
   "scripts": {
     "dev": "tsc --watch",
     "build": "tsc --build",
