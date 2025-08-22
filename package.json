@@ -15,9 +15,6 @@
   "files": [
     "dist"
   ],
-  "dependencies": {
-    "simple-git": "^3.28.0"
-  },
   "devDependencies": {
     "@cspell/eslint-plugin": "^9.2.0",
     "@eslint/js": "^9.33.0",
@@ -36,7 +33,9 @@
   "repository": "Drew-Daniels/ts-project",
   "scripts": {
     "dev": "tsc --watch",
+    "clean": "rm -rf dist",
     "build": "tsc --build",
+    "build:clean": "npm run clean && npm run build",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "format": "prettier 'src/**/*.ts'",

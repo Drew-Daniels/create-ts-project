@@ -70,9 +70,10 @@ fs.mkdirSync('test/feature', { recursive: true });
 fs.mkdirSync('test/unit', { recursive: true });
 // Initialize git repository
 cp.execSync('git init');
-// GitClient.init({ CWD: process.cwd() })
 // Create .gitignore
 fs.writeFileSync(join(projectDir, '.gitignore'), 'dist');
 // Track files
 cp.execSync('git add .');
+// Initial commit
+cp.execSync('git commit -m "Initial commit"');
 //# sourceMappingURL=index.js.map
