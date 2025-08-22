@@ -4,9 +4,9 @@
   "version": "0.1.0",
   "author": "Drew Daniels",
   "bugs": "https://github.com/Drew-Daniels/ts-project/issues",
-  "main": "install.js",
+  "main": "dist/index.js",
   "bin": {
-    "install": "install.js"
+    "install": "dist/index.js"
   },
   "dependencies": {},
   "devDependencies": {
