@@ -54,7 +54,13 @@ console.log('args: ', args)
 const projectDir = join(process.env.INIT_CWD as string, projectName);
 console.log("projectDir: ", projectDir)
 
-mkdirSync(projectDir);
+if (fs.existsSync(projectDir)) {
+  mkdirSync(projectDir);
+} else {
+  console.error("Project with this name already exists in the current directory")
+  exit(1)
+}
+
 
 // Create mise.toml
 // cp.execSync("mise use node@22.17.1")

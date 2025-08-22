@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 // inspiration: https://github.com/facebook/create-react-app/blob/main/tasks/cra.js
-import { mkdirSync } from 'fs';
+import fs, { mkdirSync } from 'fs';
 import { join } from 'path';
 import { exit } from 'process';
 const cleanup = () => {
@@ -37,4 +37,10 @@ console.log('args: ', args);
 // https://stackoverflow.com/a/49875811/13175926
 const projectDir = join(process.env.INIT_CWD, projectName);
 console.log("projectDir: ", projectDir);
-mkdirSync(projectDir);
+if (fs.existsSync(projectDir)) {
+    mkdirSync(projectDir);
+}
+else {
+    console.error("Project with this name already exists in the current directory");
+    exit(1);
+}
