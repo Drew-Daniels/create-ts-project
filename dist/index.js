@@ -38,9 +38,7 @@ console.log('args: ', args);
 const projectDir = join(process.env.INIT_CWD, projectName);
 console.log("projectDir: ", projectDir);
 if (fs.existsSync(projectDir)) {
-    mkdirSync(projectDir);
-}
-else {
     console.error("Project with this name already exists in the current directory");
     exit(1);
 }
+mkdirSync(projectDir);
