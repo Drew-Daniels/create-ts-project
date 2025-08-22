@@ -49,11 +49,5 @@ console.log('Hi!')
 // Create cucumber.js
 
 // Initialize folder structure
-const gitStatus = cp.execSync(`git status --porcelain`).toString();
-
-fs.mkDir()
-
-mkdir src
-mki
 
 // Initialize git repository
