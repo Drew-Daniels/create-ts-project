@@ -5,7 +5,7 @@
 // inspiration: https://github.com/facebook/create-react-app/blob/main/tasks/cra.js
 
 import fs, { existsSync, mkdirSync, rmSync } from 'fs';
-import { join } from 'path';
+import { dirname, join } from 'path';
 import cp from 'child_process';
 import { exit } from 'process';
 import lodash from "lodash";
@@ -18,6 +18,7 @@ const MISE_CONF_PATH = join(CWD, 'mise.toml');
 
 import defaultPkgJson from "./default-package.json" with { type: "json"};
 import defaultTSConfig from "./default-tsconfig.json" with { type: "json" };
+import { fileURLToPath } from 'url';
 
 const pkgJson = lodash.cloneDeep(defaultPkgJson)
 
@@ -93,7 +94,9 @@ cp.execSync("npm i")
 fs.writeFileSync(join(projectDir, 'tsconfig.json'), Buffer.from(JSON.stringify(defaultTSConfig)))
 
 // Create eslint.config.js
-const eslintConfigPath = join(__dirname, 'eslint.config.js')
+const filename = fileURLToPath(import.meta.url);
+const dir = dirname(filename);
+const eslintConfigPath = join(dir, 'eslint.config.js')
 console.log("eslint config path: ", eslintConfigPath)
 const defaultESLintConfig = fs.readFileSync(eslintConfigPath)
 fs.writeFileSync(join(projectDir, 'eslint.config.js'), Buffer.from(defaultESLintConfig))
