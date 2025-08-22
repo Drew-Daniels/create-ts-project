@@ -47,7 +47,6 @@ if (args.length === 0) {
 }
 // TODO: Add better validation to ensure that the value provided is a string and not characters that cannot be used for a directory name
 const projectName = args[0];
-console.log('args: ', args);
 pkgJson.name = projectName;
 // Create new directory in ~/projects/<project-name>
 // https://stackoverflow.com/a/49875811/13175926
@@ -73,8 +72,8 @@ const dir = dirname(filename);
 const miseConfigPath = join(dir, 'mise.toml');
 const defaultMiseConfig = fs.readFileSync(miseConfigPath);
 fs.writeFileSync(join(projectDir, 'mise.toml'), Buffer.from(defaultMiseConfig));
-// trust
-cp.execSync('mise trust .');
+// trust - and suppress output
+cp.execSync('mise trust .', { stdio: [] });
 // Create eslint.config.js
 const eslintConfigPath = join(dir, 'eslint.config.js');
 const defaultESLintConfig = fs.readFileSync(eslintConfigPath);
