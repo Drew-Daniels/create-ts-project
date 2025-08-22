@@ -34,6 +34,7 @@
   "repository": "Drew-Daniels/ts-project",
   "scripts": {
     "dev": "tsc --watch",
+    "dev:clean": "rm -rf dist && tsc --watch",
     "clean": "rm -rf dist",
     "build": "tsc --build",
     "build:clean": "npm run clean && npm run build",

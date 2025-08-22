@@ -12,8 +12,8 @@ const CWD = process.env.INIT_CWD;
 const spinner = ora();
 // Paths to files created
 const MISE_CONF_PATH = join(CWD, 'mise.toml');
-import defaultPkgJson from "./default-package.json" with { type: "json" };
-import defaultTSConfig from "./default-tsconfig.json" with { type: "json" };
+import defaultPkgJson from "./package.json" with { type: "json" };
+import defaultTSConfig from "./tsconfig.json" with { type: "json" };
 import { fileURLToPath } from 'url';
 const pkgJson = lodash.cloneDeep(defaultPkgJson);
 const cleanup = () => {
