@@ -65,6 +65,8 @@ cp.execSync("npm i");
 // Create tsconfig.json
 fs.writeFileSync(join(projectDir, 'tsconfig.json'), Buffer.from(JSON.stringify(defaultTSConfig)));
 // Create eslint.config.js
+const defaultESLintConfig = fs.readFileSync('./eslint.config.js');
+fs.writeFileSync(join(projectDir, 'eslint.config.js'), Buffer.from(defaultESLintConfig));
 // Create cspell.config.js
 // Create cucumber.js
 // Initialize folder structure
