@@ -62,7 +62,7 @@ if (fs.existsSync(projectDir)) {
 mkdirSync(projectDir);
 
 // Create mise.toml
-// cp.execSync("mise use node@22.17.1")
+cp.execSync("mise use node@22.17.1")
 
 // Create initial package.json
 

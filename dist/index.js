@@ -3,6 +3,7 @@
 // inspiration: https://github.com/facebook/create-react-app/blob/main/tasks/cra.js
 import fs, { mkdirSync } from 'fs';
 import { join } from 'path';
+import cp from 'child_process';
 import { exit } from 'process';
 const cleanup = () => {
     console.log('Cleaning up.');
@@ -42,3 +43,5 @@ if (fs.existsSync(projectDir)) {
     exit(1);
 }
 mkdirSync(projectDir);
+// Create mise.toml
+cp.execSync("mise use node@22.17.1");
