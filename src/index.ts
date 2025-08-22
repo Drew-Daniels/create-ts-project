@@ -15,7 +15,6 @@ const CWD = process.env.INIT_CWD as string;
 // Paths to files created
 const MISE_CONF_PATH = join(CWD, 'mise.toml');
 
-// const defPkgJson = fs.readFileSync('./default-package.json')
 import defaultPkgJson from "./default-package.json" with { type: "json"};
 
 const cleanup = () => {
@@ -73,15 +72,16 @@ if (fs.existsSync(projectDir)) {
 
 mkdirSync(projectDir);
 
+process.chdir(projectDir)
+
 // Create mise.toml
 cp.execSync("mise use node@22.17.1")
 
 // Create initial package.json
-fs.writeFileSync(join(projectDir, 'package.json'), Buffer.from(JSON.stringify(defaultPkgJson))
+fs.writeFileSync(join(projectDir, 'package.json'), Buffer.from(JSON.stringify(defaultPkgJson)))
 
-// Install developer dependencies
-
-// Install runtime dependencies
+// Install dependencies
+cp.execSync("npm i")
 
 // Create tsconfig.json
 
