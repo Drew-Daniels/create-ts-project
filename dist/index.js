@@ -1,18 +1,25 @@
 #!/usr/bin/env node
 'use strict';
 // inspiration: https://github.com/facebook/create-react-app/blob/main/tasks/cra.js
-import fs, { mkdirSync } from 'fs';
+import fs, { existsSync, mkdirSync, rmSync } from 'fs';
 import { join } from 'path';
 import cp from 'child_process';
 import { exit } from 'process';
-const defPkgJson = fs.readFileSync(join(process.cwd(), 'default-package.json'));
-// import defaultPkgJson from "./default-package.json" with { type: "json"};
+// Where the user called the script
+const CWD = process.env.INIT_CWD;
+// Paths to files created
+const MISE_CONF_PATH = join(CWD, 'mise.toml');
+// const defPkgJson = fs.readFileSync('./default-package.json')
+import defaultPkgJson from "./default-package.json" with { type: "json" };
 const cleanup = () => {
     console.log('Cleaning up.');
     // Reset changes made to package.json files.
     // cp.execSync(`git checkout -- packages/*/package.json`);
     // Uncomment when snapshot testing is enabled by default:
     // rm ./template/src/__snapshots__/App.test.js.snap
+    if (existsSync(MISE_CONF_PATH)) {
+        rmSync(MISE_CONF_PATH, { recursive: true });
+    }
 };
 const handleExit = () => {
     cleanup();
@@ -48,5 +55,5 @@ mkdirSync(projectDir);
 // Create mise.toml
 cp.execSync("mise use node@22.17.1");
 // Create initial package.json
-fs.writeFileSync(join(projectDir, 'package.json'), Buffer.from(defPkgJson));
+fs.writeFileSync(join(projectDir, 'package.json'), Buffer.from(defaultPkgJson.toString()));
 //# sourceMappingURL=index.js.map
