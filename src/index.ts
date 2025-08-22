@@ -96,14 +96,21 @@ fs.writeFileSync(join(projectDir, 'tsconfig.json'), Buffer.from(JSON.stringify(d
 // Create eslint.config.js
 const filename = fileURLToPath(import.meta.url);
 const dir = dirname(filename);
+
+// Create eslint.config.js
 const eslintConfigPath = join(dir, 'eslint.config.js')
-console.log("eslint config path: ", eslintConfigPath)
 const defaultESLintConfig = fs.readFileSync(eslintConfigPath)
 fs.writeFileSync(join(projectDir, 'eslint.config.js'), Buffer.from(defaultESLintConfig))
 
 // Create cspell.config.js
+const cspellConfigPath = join(dir, 'cspell.config.js');
+const defaultCSpellConfig = fs.readFileSync(cspellConfigPath);
+fs.writeFileSync(join(projectDir, 'cspell.config.js'), Buffer.from(defaultCSpellConfig))
 
 // Create cucumber.js
+const cucumberConfigPath = join(dir, 'cucumber.js');
+const defaultCucumberConfig = fs.readFileSync(cucumberConfigPath);
+fs.writeFileSync(join(projectDir, 'cucumber.js'), Buffer.from(defaultCucumberConfig))
 
 // Initialize folder structure
 fs.mkdirSync('src')
