@@ -94,4 +94,3 @@ fs.writeFileSync(join(projectDir, '.gitignore'), 'dist');
 cp.execSync('git add .');
 // Initial commit
 cp.execSync('git commit -m "Initial commit"');
-//# sourceMappingURL=index.js.map

@@ -15,4 +15,3 @@ export default {
         'cucumber-console-formatter',
     ]
 };
-//# sourceMappingURL=cucumber.js.map

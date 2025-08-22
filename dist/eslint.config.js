@@ -20,4 +20,3 @@ export default defineConfig([
     eslintConfigPrettier,
     globalIgnores(['./dist', './bin']),
 ]);
-//# sourceMappingURL=eslint.config.js.map

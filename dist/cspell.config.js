@@ -5,4 +5,3 @@ export default defineConfig({
     words: [],
     /* eslint-enable */
 });
-//# sourceMappingURL=cspell.config.js.map
