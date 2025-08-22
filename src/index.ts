@@ -8,6 +8,7 @@ import fs, { existsSync, mkdirSync, rmSync } from 'fs';
 import { join } from 'path';
 import cp from 'child_process';
 import { exit } from 'process';
+import { cloneDeep } from "lodash";
 
 // Where the user called the script
 const CWD = process.env.INIT_CWD as string;
@@ -17,6 +18,8 @@ const MISE_CONF_PATH = join(CWD, 'mise.toml');
 
 import defaultPkgJson from "./default-package.json" with { type: "json"};
 import defaultTSConfig from "./default-tsconfig.json" with { type: "json" };
+
+const pkgJson = cloneDeep(defaultPkgJson)
 
 const cleanup = () => {
   console.log('Cleaning up.');
@@ -60,6 +63,8 @@ const projectName = args[0];
 
 console.log('args: ', args)
 
+pkgJson.name = projectName;
+
 // Create new directory in ~/projects/<project-name>
 
 // https://stackoverflow.com/a/49875811/13175926
@@ -79,7 +84,7 @@ process.chdir(projectDir)
 cp.execSync("mise use node@22.17.1")
 
 // Create initial package.json
-fs.writeFileSync(join(projectDir, 'package.json'), Buffer.from(JSON.stringify(defaultPkgJson)))
+fs.writeFileSync(join(projectDir, 'package.json'), Buffer.from(JSON.stringify(pkgJson)))
 
 // Install dependencies
 cp.execSync("npm i")

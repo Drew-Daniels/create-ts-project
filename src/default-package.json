@@ -32,6 +32,9 @@
   "scripts": {
     "dev": "tsc -w",
     "build": "shx rm -rf dist && tsc -b",
+    "test": "npm run test:unit && npm run test:integration",
+    "test:unit": "node --test --experimental-test-coverage 'test/unit/**/*.ts'",
+    "test:integration": "npx cucumber-js -c cucumber.js",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "format": "prettier 'src/**/*.ts'",
