@@ -7,6 +7,7 @@
 import fs from 'fs';
 import path from 'path';
 import cp from 'child_process';
+import { exit } from 'process';
 
 const cleanup = () => {
   console.log('Cleaning up.');
@@ -33,9 +34,12 @@ const handleError = (e: Error) => {
 process.on('SIGINT', handleExit);
 process.on('uncaughtException', handleError);
 
-console.log('Hi!')
-
 const args = process.argv.slice(2);
+
+if (args.length === 0) {
+  console.error("Project name must be provided")
+  exit(1)
+}
 
 console.log('args: ', args)
 
