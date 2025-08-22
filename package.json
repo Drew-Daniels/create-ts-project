@@ -4,6 +4,10 @@
   "version": "0.1.0",
   "author": "Drew Daniels",
   "bugs": "https://github.com/Drew-Daniels/<PROJECT-NAME>/issues",
+  "main": "install.js",
+  "bin": {
+    "install": "install.js"
+  },
   "dependencies": {},
   "devDependencies": {
     "@cspell/eslint-plugin": "^9.2.0",
@@ -22,7 +26,6 @@
     "oclif"
   ],
   "license": "MIT",
-  "main": "dist/index.js",
   "type": "module",
   "repository": "Drew-Daniels/<PROJECT-NAME>",
   "scripts": {
