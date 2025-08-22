@@ -36,7 +36,7 @@
     "dev": "tsc --watch",
     "dev:clean": "rm -rf dist && tsc --watch",
     "clean": "rm -rf dist",
-    "build": "tsc --build",
+    "build": "tsc --build && cp src/*.toml dist/",
     "build:clean": "npm run clean && npm run build",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
