@@ -68,4 +68,11 @@ fs.writeFileSync(join(projectDir, 'tsconfig.json'), Buffer.from(JSON.stringify(d
 fs.mkdirSync('src');
 fs.mkdirSync('test/feature', { recursive: true });
 fs.mkdirSync('test/unit', { recursive: true });
+// Initialize git repository
+cp.execSync('git init');
+// GitClient.init({ CWD: process.cwd() })
+// Create .gitignore
+fs.writeFileSync(join(projectDir, '.gitignore'), 'dist');
+// Track files
+cp.execSync('git add .');
 //# sourceMappingURL=index.js.map

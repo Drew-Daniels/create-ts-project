@@ -9,6 +9,8 @@ import { join } from 'path';
 import cp from 'child_process';
 import { exit } from 'process';
 
+import { GitClient } from "./git-client.js";
+
 // Where the user called the script
 const CWD = process.env.INIT_CWD as string;
 
@@ -99,3 +101,11 @@ fs.mkdirSync('test/feature', { recursive: true })
 fs.mkdirSync('test/unit', { recursive: true })
 
 // Initialize git repository
+cp.execSync('git init')
+// GitClient.init({ CWD: process.cwd() })
+
+// Create .gitignore
+fs.writeFileSync(join(projectDir, '.gitignore'), 'dist')
+
+// Track files
+cp.execSync('git add .')
