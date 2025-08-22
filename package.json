@@ -4,10 +4,17 @@
   "version": "0.1.0",
   "author": "Drew Daniels",
   "bugs": "https://github.com/Drew-Daniels/ts-project/issues",
+  "keywords": [
+    "typescript",
+    "ts"
+  ],
   "main": "dist/index.js",
   "bin": {
-    "install": "dist/index.js"
+    "create-ts-project": "dist/index.js"
   },
+  "files": [
+    "dist/index.js"
+  ],
   "dependencies": {},
   "devDependencies": {
     "@cspell/eslint-plugin": "^9.2.0",

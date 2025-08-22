@@ -35,6 +35,10 @@ process.on('uncaughtException', handleError);
 
 console.log('Hi!')
 
+const args = process.argv.slice(2);
+
+console.log('args: ', args)
+
 // Verify project name passed as an argument
 
 // Create new directory in ~/projects/<project-name>
