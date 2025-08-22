@@ -77,7 +77,7 @@ mkdirSync(projectDir);
 cp.execSync("mise use node@22.17.1")
 
 // Create initial package.json
-fs.writeFileSync(join(projectDir, 'package.json'), Buffer.from(defaultPkgJson.toString()))
+fs.writeFileSync(join(projectDir, 'package.json'), Buffer.from(JSON.stringify(defaultPkgJson))
 
 // Install developer dependencies
 
