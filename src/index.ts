@@ -72,7 +72,6 @@ pkgJson.name = projectName;
 
 // https://stackoverflow.com/a/49875811/13175926
 const projectDir = join(process.env.INIT_CWD as string, projectName);
-console.log("projectDir: ", projectDir)
 
 if (fs.existsSync(projectDir)) {
   console.error("Project with this name already exists in the current directory")
@@ -82,9 +81,6 @@ if (fs.existsSync(projectDir)) {
 mkdirSync(projectDir);
 
 process.chdir(projectDir)
-
-// Create mise.toml
-cp.execSync("mise use node@22.17.1")
 
 // Create initial package.json
 fs.writeFileSync(join(projectDir, 'package.json'), Buffer.from(JSON.stringify(pkgJson)))
@@ -100,6 +96,14 @@ fs.writeFileSync(join(projectDir, 'tsconfig.json'), Buffer.from(JSON.stringify(d
 // Create eslint.config.js
 const filename = fileURLToPath(import.meta.url);
 const dir = dirname(filename);
+
+// Create mise.toml
+const miseConfigPath = join(dir, 'default-mise.toml')
+const defaultMiseConfig = fs.readFileSync(miseConfigPath)
+fs.writeFileSync(join(projectDir, 'mise.toml'), Buffer.from(defaultMiseConfig))
+
+// trust
+cp.execSync('mise trust .')
 
 // Create eslint.config.js
 const eslintConfigPath = join(dir, 'eslint.config.js')
