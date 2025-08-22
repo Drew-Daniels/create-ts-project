@@ -13,7 +13,7 @@ import { fileURLToPath } from 'url';
 const cleanup = () => {
   console.log('Cleaning up.');
   // Reset changes made to package.json files.
-  cp.execSync(`git checkout -- packages/*/package.json`);
+  // cp.execSync(`git checkout -- packages/*/package.json`);
   // Uncomment when snapshot testing is enabled by default:
   // rm ./template/src/__snapshots__/App.test.js.snap
 };
@@ -50,10 +50,10 @@ console.log('args: ', args)
 
 // Create new directory in ~/projects/<project-name>
 
-const filename = fileURLToPath(import.meta.url);
-const dir = dirname(filename);
-const projectDir = join(dir, projectName);
-mkdirSync(projectDir);
+const projectDir = join(process.env.INIT_CWD as string, projectName);
+console.log("projectDir: ", projectDir)
+
+// mkdirSync(projectDir);
 
 // Create mise.toml
 
