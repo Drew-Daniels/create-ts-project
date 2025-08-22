@@ -4,10 +4,11 @@
 
 // inspiration: https://github.com/facebook/create-react-app/blob/main/tasks/cra.js
 
-import fs from 'fs';
-import path from 'path';
+import fs, { mkdir, mkdirSync } from 'fs';
+import path, { dirname, join } from 'path';
 import cp from 'child_process';
 import { exit } from 'process';
+import { fileURLToPath } from 'url';
 
 const cleanup = () => {
   console.log('Cleaning up.');
@@ -41,11 +42,18 @@ if (args.length === 0) {
   exit(1)
 }
 
+// TODO: Add better validation to ensure that the value provided is a string and not characters that cannot be used for a directory name
+
+const projectName = args[0];
+
 console.log('args: ', args)
 
-// Verify project name passed as an argument
-
 // Create new directory in ~/projects/<project-name>
+
+const filename = fileURLToPath(import.meta.url);
+const dir = dirname(filename);
+const projectDir = join(dir, projectName);
+mkdirSync(projectDir);
 
 // Create mise.toml
 
