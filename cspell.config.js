@@ -4,6 +4,6 @@ import { defineConfig } from 'cspell';
 
 export default defineConfig({
   /* eslint-disable */
-  words: ['issuetype', 'codeberg'],
+  words: [],
   /* eslint-enable */
 });
