@@ -4,8 +4,8 @@
 
 // inspiration: https://github.com/facebook/create-react-app/blob/main/tasks/cra.js
 
-import fs, { existsSync, mkdir, mkdirSync, rmSync } from 'fs';
-import path, { dirname, join } from 'path';
+import fs, { existsSync, mkdirSync, rmSync } from 'fs';
+import { join } from 'path';
 import cp from 'child_process';
 import { exit } from 'process';
 
@@ -16,6 +16,7 @@ const CWD = process.env.INIT_CWD as string;
 const MISE_CONF_PATH = join(CWD, 'mise.toml');
 
 import defaultPkgJson from "./default-package.json" with { type: "json"};
+import defaultTSConfig from "./default-tsconfig.json" with { type: "json" };
 
 const cleanup = () => {
   console.log('Cleaning up.');
@@ -84,6 +85,7 @@ fs.writeFileSync(join(projectDir, 'package.json'), Buffer.from(JSON.stringify(de
 cp.execSync("npm i")
 
 // Create tsconfig.json
+fs.writeFileSync(join(projectDir, 'tsconfig.json'), Buffer.from(JSON.stringify(defaultTSConfig)))
 
 // Create eslint.config.js
 
@@ -92,5 +94,8 @@ cp.execSync("npm i")
 // Create cucumber.js
 
 // Initialize folder structure
+fs.mkdirSync('src')
+fs.mkdirSync('test/feature', { recursive: true })
+fs.mkdirSync('test/unit', { recursive: true })
 
 // Initialize git repository

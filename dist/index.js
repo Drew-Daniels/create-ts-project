@@ -10,6 +10,7 @@ const CWD = process.env.INIT_CWD;
 // Paths to files created
 const MISE_CONF_PATH = join(CWD, 'mise.toml');
 import defaultPkgJson from "./default-package.json" with { type: "json" };
+import defaultTSConfig from "./default-tsconfig.json" with { type: "json" };
 const cleanup = () => {
     console.log('Cleaning up.');
     // Reset changes made to package.json files.
@@ -58,4 +59,13 @@ cp.execSync("mise use node@22.17.1");
 fs.writeFileSync(join(projectDir, 'package.json'), Buffer.from(JSON.stringify(defaultPkgJson)));
 // Install dependencies
 cp.execSync("npm i");
+// Create tsconfig.json
+fs.writeFileSync(join(projectDir, 'tsconfig.json'), Buffer.from(JSON.stringify(defaultTSConfig)));
+// Create eslint.config.js
+// Create cspell.config.js
+// Create cucumber.js
+// Initialize folder structure
+fs.mkdirSync('src');
+fs.mkdirSync('test/feature', { recursive: true });
+fs.mkdirSync('test/unit', { recursive: true });
 //# sourceMappingURL=index.js.map
