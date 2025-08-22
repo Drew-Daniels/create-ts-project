@@ -43,6 +43,7 @@
     "format:write": "prettier 'src/**/*.ts' --write"
   },
   "dependencies": {
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "ora": "^8.2.0"
   }
 }
