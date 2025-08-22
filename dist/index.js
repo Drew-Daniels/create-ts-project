@@ -5,6 +5,8 @@ import fs, { mkdirSync } from 'fs';
 import { join } from 'path';
 import cp from 'child_process';
 import { exit } from 'process';
+const defPkgJson = fs.readFileSync('./default-package.json');
+// import defaultPkgJson from "./default-package.json" with { type: "json"};
 const cleanup = () => {
     console.log('Cleaning up.');
     // Reset changes made to package.json files.
@@ -45,3 +47,6 @@ if (fs.existsSync(projectDir)) {
 mkdirSync(projectDir);
 // Create mise.toml
 cp.execSync("mise use node@22.17.1");
+// Create initial package.json
+fs.writeFileSync(join(projectDir, 'package.json'), Buffer.from(defPkgJson));
+//# sourceMappingURL=index.js.map

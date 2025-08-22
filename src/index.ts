@@ -8,7 +8,9 @@ import fs, { mkdir, mkdirSync } from 'fs';
 import path, { dirname, join } from 'path';
 import cp from 'child_process';
 import { exit } from 'process';
-import { fileURLToPath } from 'url';
+
+const defPkgJson = fs.readFileSync('./default-package.json')
+// import defaultPkgJson from "./default-package.json" with { type: "json"};
 
 const cleanup = () => {
   console.log('Cleaning up.');
@@ -65,6 +67,7 @@ mkdirSync(projectDir);
 cp.execSync("mise use node@22.17.1")
 
 // Create initial package.json
+fs.writeFileSync(join(projectDir, 'package.json'), Buffer.from(defPkgJson))
 
 // Install developer dependencies
 
