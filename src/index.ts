@@ -93,7 +93,9 @@ cp.execSync("npm i")
 fs.writeFileSync(join(projectDir, 'tsconfig.json'), Buffer.from(JSON.stringify(defaultTSConfig)))
 
 // Create eslint.config.js
-const defaultESLintConfig = fs.readFileSync('./eslint.config.js')
+const eslintConfigPath = join(__dirname, 'eslint.config.js')
+console.log("eslint config path: ", eslintConfigPath)
+const defaultESLintConfig = fs.readFileSync(eslintConfigPath)
 fs.writeFileSync(join(projectDir, 'eslint.config.js'), Buffer.from(defaultESLintConfig))
 
 // Create cspell.config.js
