@@ -50,12 +50,14 @@ console.log('args: ', args)
 
 // Create new directory in ~/projects/<project-name>
 
+// https://stackoverflow.com/a/49875811/13175926
 const projectDir = join(process.env.INIT_CWD as string, projectName);
 console.log("projectDir: ", projectDir)
 
-// mkdirSync(projectDir);
+mkdirSync(projectDir);
 
 // Create mise.toml
+// cp.execSync("mise use node@22.17.1")
 
 // Create initial package.json
 

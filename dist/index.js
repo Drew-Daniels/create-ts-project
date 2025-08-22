@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 'use strict';
+// inspiration: https://github.com/facebook/create-react-app/blob/main/tasks/cra.js
+import { mkdirSync } from 'fs';
 import { join } from 'path';
 import { exit } from 'process';
 const cleanup = () => {
@@ -32,5 +34,7 @@ if (args.length === 0) {
 const projectName = args[0];
 console.log('args: ', args);
 // Create new directory in ~/projects/<project-name>
+// https://stackoverflow.com/a/49875811/13175926
 const projectDir = join(process.env.INIT_CWD, projectName);
 console.log("projectDir: ", projectDir);
+mkdirSync(projectDir);
