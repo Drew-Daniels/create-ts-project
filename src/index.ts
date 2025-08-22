@@ -64,8 +64,6 @@ if (args.length === 0) {
 
 const projectName = args[0];
 
-console.log('args: ', args)
-
 pkgJson.name = projectName;
 
 // Create new directory in ~/projects/<project-name>
