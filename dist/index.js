@@ -71,6 +71,8 @@ fs.writeFileSync(join(projectDir, 'tsconfig.json'), Buffer.from(JSON.stringify(d
 fs.mkdirSync('src');
 fs.mkdirSync('test/feature', { recursive: true });
 fs.mkdirSync('test/unit', { recursive: true });
+// Initialize src files
+fs.writeFileSync(join(projectDir, 'src/index.ts'), 'console.log("Hello world!")');
 // Initialize git repository
 cp.execSync('git init');
 // Create .gitignore
