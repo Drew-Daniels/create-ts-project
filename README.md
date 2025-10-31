@@ -8,6 +8,7 @@ npm init git@github.com:Drew-Daniels/ts-project.git your-project-name
 
 ## Roadmap
 
+- [ ] Ensure `package.json` and `tsconfig.json` are properly formatted
 - [ ] Add step to copy or create `flake.nix`
 - [ ] Publish npm package
 - [ ] Create stub unit tests
