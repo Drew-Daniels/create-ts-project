@@ -101,7 +101,7 @@ const defaultMiseConfig = fs.readFileSync(miseConfigPath)
 fs.writeFileSync(join(projectDir, 'mise.toml'), Buffer.from(defaultMiseConfig))
 
 // trust - and suppress output
-cp.execSync('mise trust .', { stdio: [] })
+cp.execSync('command -v mise && mise trust .', { stdio: [] })
 
 // Create eslint.config.js
 const eslintConfigPath = join(dir, 'eslint.config.js')

@@ -12,5 +12,5 @@ npm init git@github.com:Drew-Daniels/ts-project.git your-project-name
 - [ ] Create stub unit tests
 - [ ] Create stub BDD tests
 - [ ] Enable package manager choice
-- [ ] Enable runtime manager choice
+- [ ] Enable runtime manager choice (`mise`, `volta`, `nvm`, etc.)
 - [ ] Enable workspaces choice
