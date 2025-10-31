@@ -83,11 +83,6 @@ process.chdir(projectDir)
 // Create initial package.json
 fs.writeFileSync(join(projectDir, 'package.json'), Buffer.from(JSON.stringify(pkgJson)))
 
-// Install dependencies
-spinner.start('Installing dependencies')
-cp.execSync("npm i")
-spinner.stop()
-
 // Create tsconfig.json
 fs.writeFileSync(join(projectDir, 'tsconfig.json'), Buffer.from(JSON.stringify(defaultTSConfig)))
 
@@ -99,6 +94,26 @@ const dir = dirname(filename);
 const miseConfigPath = join(dir, 'mise.toml')
 const defaultMiseConfig = fs.readFileSync(miseConfigPath)
 fs.writeFileSync(join(projectDir, 'mise.toml'), Buffer.from(defaultMiseConfig))
+
+// Create flake.nix
+const flakeConfigPath = join(dir, 'flake.nix');
+const defaultFlakeConfig = fs.readFileSync(flakeConfigPath);
+fs.writeFileSync(join(projectDir, 'flake.nix'), Buffer.from(defaultFlakeConfig))
+
+// Create direnv config
+const direnvConfigPath = join(dir, '.envrc');
+const defaultDirenvConfig = fs.readFileSync(direnvConfigPath);
+fs.writeFileSync(join(projectDir, '.envrc'), Buffer.from(defaultDirenvConfig))
+
+// Configure nix dev env
+spinner.start('Installing dependencies')
+cp.execSync("command -v direnv && direnv allow .")
+spinner.stop()
+
+// Install dependencies
+spinner.start('Installing dependencies')
+cp.execSync("npm i")
+spinner.stop()
 
 // trust - and suppress output
 cp.execSync('command -v mise && mise trust .', { stdio: [] })
