@@ -77,15 +77,27 @@ const direnvConfigPath = join(dir, '.envrc');
 const defaultDirenvConfig = fs.readFileSync(direnvConfigPath);
 fs.writeFileSync(join(projectDir, '.envrc'), Buffer.from(defaultDirenvConfig));
 // Configure nix dev env
-spinner.start('Installing dependencies');
-cp.execSync("command -v direnv && direnv allow .");
+spinner.start('Conditionally configuring nix development environment');
+try {
+    cp.execSync("direnv allow .");
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+}
+catch (error) {
+    console.log('"direnv" is uninstalled - not trusting .envrc');
+}
 spinner.stop();
 // Install dependencies
 spinner.start('Installing dependencies');
 cp.execSync("npm i");
 spinner.stop();
 // trust - and suppress output
-cp.execSync('command -v mise && mise trust .', { stdio: [] });
+try {
+    cp.execSync('mise trust .', { stdio: [] });
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+}
+catch (e) {
+    console.log('"mise" is uninstalled - not trusting mise.toml');
+}
 // Create eslint.config.js
 const eslintConfigPath = join(dir, 'eslint.config.js');
 const defaultESLintConfig = fs.readFileSync(eslintConfigPath);
