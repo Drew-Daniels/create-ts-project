@@ -106,7 +106,7 @@ const defaultDirenvConfig = fs.readFileSync(direnvConfigPath);
 fs.writeFileSync(join(projectDir, '.envrc'), Buffer.from(defaultDirenvConfig))
 
 // Configure nix dev env
-spinner.start('Installing dependencies')
+spinner.start('Conditionally configuring nix development environment')
 cp.execSync("command -v direnv && direnv allow .")
 spinner.stop()
 
