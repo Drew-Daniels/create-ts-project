@@ -14,3 +14,19 @@ npm init git@github.com:Drew-Daniels/ts-project.git your-project-name
 - [ ] Enable package manager choice
 - [ ] Enable runtime manager choice (`mise`, `volta`, `nvm`, etc.)
 - [ ] Enable workspaces choice
+
+## Development
+
+```bash
+git clone https://github.com/Drew-Daniels/create-ts-project.git
+cd create-ts-project
+# Optionally - if using NixOS and direnv
+# direnv allow .
+npm i
+```
+
+After updating `src`, rebuild to update `dist`:
+
+```bash
+npm run build
+```
